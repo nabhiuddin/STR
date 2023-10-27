@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STR Dashboard</title>
+    <!-- Tab Change  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Tab Change  -->
+
+    <!-- Poupop -->
+
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    /> -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Poupop -->
+
+    <!-- Include Bootstrap CSS and JavaScript -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!-- BOOTSTRAP CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- BOOTSTRAP CSS CDN -->
+
+    <!-- JQUERRY CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- JQUERRY CDN -->
+
+    <!-- popup -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Include jQuery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+    <!-- Include DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
+    />
+    <!-- Include DataTables JavaScript -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"
+    ></script>
+
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  </head>
+  <style>
+    body {
+      height: 100vh;
+    }
+
+    .mani-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      height: calc(100% - 48px);
+    }
+    .new-container {
+      display: flex;
+      flex-direction: "row";
+    }
+    .file_type,
+    .file-type,
+    .year-select,
+    .yearly-select,
+    .week-select,
+    .month-select,
+    .field-wrapper,
+    .filters-wrapper {
+      display: flex;
+      gap: 30px;
+    }
+
+    .upload-wrapper {
+      display: flex;
+      gap: 150px;
+    }
+
+    .ManagementGroups,
+    .corparation {
+      display: flex;
+      gap: 50px;
+    }
+
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .table-wrapper {
+      overflow: auto;
+      border: 1px solid lightgrey;
+    }
+
+    .table-container {
+      border-top: 1px solid lightgrey;
+      /* border-bottom: 1px solid lightgrey; */
+      /* margin: 20px 0px; */
+    }
+
+    .table-container h3 {
+      margin: 8px;
+    }
+
+    .dataTables_wrapper {
+      /* border-top: 1px solid lightgrey; */
+
+      padding: 8px;
+    }
+
+    #tables-container table thead th {
+      text-align: center;
+    }
+
+    #tables-container table {
+      width: fit-content;
+      /* width: 95%; */
+      border-collapse: collapse;
+    }
+
+    #tables-container table th,
+    #tables-container table td {
+      padding: 8px 12px; /* Add padding to table cells */
+      border: 1px solid #ccc; /* Add a border to table cells */
+      white-space: nowrap;
+    }
+
+    #tables-container h2 {
+      margin-bottom: 10px; /* Add some spacing below table titles */
+    }
+
+    .FromRange,
+    .ToRange {
+      display: inline-block;
+      width: 45%; /* Adjust the width as needed to fit your layout */
+      /* margin-right: 5%; */
+    }
+
+    #logout {
+      position: absolute;
+      top: 5px; /* Adjust the top position as needed */
+      right: 10px; /* Adjust the right position as needed */
+    }
+  </style>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-primary"
+      style="height: 48px !important; padding: 0px 25px"
+    >
+      <a class="navbar-brand" href="#">STR Dashboard</a>
+      <button class="btn btn-danger" id="logout">Logout</button>
+    </nav>
+    <div class="mani-wrapper" style="padding: 25px">
+      <div class="field-wrapper">
+        <div class="ManagementGroups">
+          <label for="Management_Groups"
+            >Management Groups: <em style="color: red">*</em></label
+          >
+          <select class="form-select form-select-sm mb-5">
+            <option selected>-select-</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+
+        <div class="corparation">
+          <label for="corporation_label"
+            >Corporation Label: <em style="color: red">*</em></label
+          >
+          <select class="form-select form-select-sm mb-5" id="">
+            <option selected>-select-</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+
+      <nav class="nav nav-pills nav-justified">
+        <a class="nav-link active" aria-current="page" href="#tab1">Week</a>
+        <a class="nav-link" href="#tab2">Weekly</a>
+        <a class="nav-link" href="#tab3">Month</a>
+        <a class="nav-link" href="#tab4">Monthly</a>
+        <a class="nav-link" href="#tab5">Yearly</a>
+        <a class="nav-link" href="#tab6">Range</a>
+      </nav>
+
+      <div class="container mt-5">
+        <div class="tab-content" id="myTabsContent">
+          <!-- Tab 1 -->
+          <div class="tab-pane fade show active" id="tab1">
+            <div class="filters-wrapper">
+              <div class="year-select" id="yearLabel">
+                <label for="year_#tab1">Year:</label>
+                <select
+                  name="selected_file_type"
+                  class="form-select form-select-sm mb-2"
+                  id="year_#tab1"
+                >
+                  <option selected value="-1">-select-</option>
+                </select>
+              </div>
+
+              <div class="week-select" id="weekLabel">
+                <label for="weekFrom_#tab1">Week:</label>
+                <select
+                  id="weekFrom_#tab1"
+                  class="form-select form-select-sm mb-2"
+                >
+                  <option selected value="-1">-select-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- Tab 2 -->
+          <div class="tab-pane fade" id="tab2"></div>
+          <!-- Tab 3 -->
+          <div class="tab-pane fade" id="tab3"></div>
+          <!-- Tab 4 -->
+          <div class="tab-pane fade" id="tab4"></div>
+          <!-- Tab 5 -->
+          <div class="tab-pane fade" id="tab5"></div>
+          <!-- Tab 6 -->
+          <div class="tab-pane fade" id="tab6"></div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Settings</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="range-wrapper" style="padding: 25px">
+              <div class="dropdown-wrapper">
+                <!-- <div class="ViewTransactions">
+                  <label for="View_Transactions"
+                    >View Transactions: <em style="color: red">*</em></label
+                  >
+                  <select name="ViewTransactions" id="view_transaction">
+                    <option selected>-select-</option>
+                  </select>
+                </div> -->
+                <div class="FromRange">
+                  <label for="From_range"
+                    >From : <em style="color: red">*</em></label
+                  >
+                  <input type="text" id="datepickerTo" autocomplete="off" />
+                </div>
+                <div class="ToRange">
+                  <label for="to_range"
+                    >To : <em style="color: red">*</em></label
+                  >
+                  <input type="text" id="datepickerFrom" autocomplete="off" />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="getDateButton"
+                data-dismiss="modal"
+              >
+                OK
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <div id="tables-container"></div>
+      </div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script> -->
+
+    <script>
+      // const rangeVT = document.getElementById("view_transaction");
+      // function PopulatedRangeVT() {}
+
+      let dataSet = {
+        week_start_date: "",
+        week_end_date: "",
+        str_id: "38865",
+      };
+
+      //INTTIAL DOM RENDER
+      $(document).ready(function () {
+        let intial_tabId = "#tab1";
+        // populatedLastYearlyDropdown(intial_tabId);
+        populateYearDropdown(intial_tabId);
+        populateMonthDropdown(intial_tabId);
+        onChangeEvents();
+      });
+
+      function onChangeEvents() {
+        $(".nav-pills a").each(function () {
+          let tabId = $(this).attr("href");
+          let yearDropdown = document.getElementById(`year_${tabId}`);
+          let weeksDropdown = document.getElementById(`weekFrom_${tabId}`);
+          let weeksToDropdown = document.getElementById(`WeekTo_${tabId}`);
+          let monthDropdown = document.getElementById(`month_${tabId}`);
+          let yearlyDropdown = document.getElementById(`yearly_${tabId}`);
+
+          if (yearDropdown) {
+            yearDropdown.removeEventListener(
+              "change",
+              handleYearDropdownChange
+            );
+            yearDropdown.addEventListener("change", handleYearDropdownChange);
+          }
+
+          if (weeksDropdown) {
+            weeksDropdown.removeEventListener(
+              "change",
+              handleWeekFromDropdownChange
+            );
+            weeksDropdown.addEventListener(
+              "change",
+              handleWeekFromDropdownChange
+            );
+          }
+
+          if (weeksToDropdown) {
+            weeksToDropdown.removeEventListener(
+              "change",
+              handleWeekToDropdownChange
+            );
+            weeksToDropdown.addEventListener(
+              "change",
+              handleWeekToDropdownChange
+            );
+          }
+
+          if (monthDropdown) {
+            monthDropdown.removeEventListener(
+              "change",
+              handleMonthDropdownChange
+            );
+            monthDropdown.addEventListener("change", handleMonthDropdownChange);
+          }
+
+          if (yearlyDropdown) {
+            yearlyDropdown.removeEventListener(
+              "change",
+              handleYearlyDropdownChange
+            );
+            yearlyDropdown.addEventListener(
+              "change",
+              handleYearlyDropdownChange
+            );
+          }
+        });
+      }
+
+      // TAB ONCHANGE FUNCTION
+      $(".nav-pills a").on("click", function changeTab(e) {
+        e.preventDefault();
+
+        let tabId = $(this).attr("href");
+        // console.log(tabId)
+        $("#tables-container").empty();
+        $(tabId).empty();
+
+        let filtersWrappersDiv = $("<div class='filters-wrapper'></div>");
+
+        let yearDiv = `<div class="year-select" id="yearLabel">
+                    <label for="year_${tabId}">Year:</label>
+                    <select
+                      name="selected_file_type"
+                      class="form-select form-select-sm mb-2"
+                      id="year_${tabId}"
+                    >
+                      <option selected value="-1">
+                        -select-
+                      </option>
+                    </select>
+                  </div>`;
+
+        let weekDivFrom = `<div class="week-select" id="weekLabel">
+                    <label for="weekFrom_${tabId}">
+                      ${tabId == "#tab2" ? "Weeks From" : "Weeks"}
+                    </label>
+                    <select id="weekFrom_${tabId}" class="form-select form-select-sm mb-2">
+                      <option selected value="-1">
+                        ${tabId == "#tab2" ? "-From-" : "-Select-"}
+                      </option>
+                    </select>
+                  </div>`;
+
+        let weekDivTo = `<div class="week-select" id="weekLabel">
+                    <label for="WeekTo_${tabId}">Week To:</label>
+                    <select
+                      id="WeekTo_${tabId}"
+                      class="form-select form-select-sm mb-2"
+                    >
+                      <option selected value="-1">
+                        -To-
+                      </option>
+                    </select>
+                  </div>`;
+
+        let monthDiv = `<div class="month-select" id="MonthLabel">
+                    <label for="month_${tabId}">Month:</label>
+                    <select id="month_${tabId}" class="form-select form-select-sm mb-2">
+                      <option selected value="-1">
+                        -select-
+                      </option>
+                    </select>
+                  </div>`;
+
+        let yearlyDiv = `<div class="yearly-select" id="YearlyLabel">
+                    <label for="yearly_${tabId}">year:</label>
+                    <select id="yearly_${tabId}" class="form-select form-select-sm mb-2">
+                      <option selected value="-1">
+                        -select-
+                      </option>
+                    </select>
+                  </div>`;
+
+        let rangeDiv = `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                         select date range
+                        </button>`;
+
+        if (
+          tabId == "#tab1" ||
+          tabId == "#tab2" ||
+          tabId == "#tab3" ||
+          tabId == "#tab4" ||
+          tabId == "#tab5" ||
+          tabId == "#tab6"
+        ) {
+          // if (tabId == "#tab5") {
+          //   filtersWrappersDiv.append(yearlyDiv);
+          // } else {
+          //   filtersWrappersDiv.append(yearDiv);
+          // }
+
+          if (tabId == "#tab5") {
+            filtersWrappersDiv.append(yearlyDiv);
+          } else if (tabId == "#tab6") {
+            filtersWrappersDiv.append(rangeDiv);
+          } else {
+            filtersWrappersDiv.append(yearDiv);
+          }
+
+          if (tabId == "#tab1" || tabId == "#tab2") {
+            filtersWrappersDiv.append(weekDivFrom);
+            if (tabId == "#tab2") {
+              filtersWrappersDiv.append(weekDivTo);
+            }
+          }
+
+          if (tabId == "#tab3") {
+            filtersWrappersDiv.append(monthDiv);
+          }
+
+          $(tabId).append(filtersWrappersDiv);
+        }
+
+        $(this).tab("show");
+        populatedLastYearlyDropdown(tabId);
+        populateYearDropdown(tabId);
+        populateMonthDropdown(tabId);
+        onChangeEvents();
+
+        dataSet.week_end_date = "";
+        dataSet.week_start_date = "";
+      });
+
+      //DROPDOWN ONCHANGE FUNCTIONS
+      let selectedYear;
+      function handleYearDropdownChange() {
+        $("#tables-container").empty();
+        let tabId = this.id.split("_")[1];
+        // console.log(tabId);
+
+        selectedYear = this.value;
+        // console.log(selectedYear);
+
+        let data_selected_year = {
+          year_selected: selectedYear,
+          str_id: "38865",
+        };
+        let weekNumber = weeksInYear(selectedYear);
+        let weekRangesArray = getDateRangeOfWeek(weekNumber, selectedYear);
+
+        if (tabId == "#tab4") {
+          fetchTabularData("/monthly_data/", data_selected_year, tabId);
+        } else {
+          populateWeekDropdown(tabId, weekRangesArray);
+        }
+      }
+
+      function handleWeekFromDropdownChange() {
+        $("#tables-container").empty();
+        let tabId = this.id.split("_")[1];
+        let weekFrom = this.value;
+
+        let weekRange = weekFrom.split(":")[1].split("-");
+
+        let date_array = extractData(weekRange);
+
+        let data = {
+          startdate: date_array[0],
+          enddate: date_array[1],
+          str_id: "38865",
+        };
+
+        let weekException = weeksBetweenDates(date_array[0], dataSet.enddate);
+
+        if (tabId == "#tab1") {
+          fetchTabularData("/week_data/", data, tabId);
+        } else {
+          dataSet.week_start_date = data.startdate;
+          if (dataSet.week_end_date != "") {
+            if (weekException <= 12) {
+              fetchTabularData("/weekly_data/", dataSet, tabId);
+            }
+            // else {
+            //   alert("select weeks-range upto 12 weeks");
+            // }
+          }
+        }
+      }
+
+      function handleWeekToDropdownChange() {
+        $("#tables-container").empty();
+        let tabId = this.id.split("_")[1];
+        let weekTo = this.value;
+        let weekRange = weekTo.split(":")[1].split("-");
+        let date_array = extractData(weekRange);
+        dataSet.week_end_date = date_array[1];
+
+        let weekException = weeksBetweenDates(
+          dataSet.week_start_date,
+          date_array[1]
+        );
+
+        if (dataSet.week_start_date != "") {
+          if (weekException <= 12) {
+            fetchTabularData("/weekly_data/", dataSet, tabId);
+          } else {
+            alert("select weeks-range upto 12 weeks");
+          }
+        }
+      }
+
+      function handleMonthDropdownChange() {
+        $("#tables-container").empty();
+        let tabId = this.id.split("_")[1];
+        let month = this.value;
+        // console.log(month);
+
+        let fetchMonth = {
+          year: selectedYear,
+          month: month,
+          str_id: "38865",
+        };
+        // console.log(fetchMonth);
+        if (tabId == "#tab3") {
+          fetchTabularData("/month_data/", fetchMonth, tabId);
+        }
+      }
+
+      function handleYearlyDropdownChange() {
+        $("#tables-container").empty();
+        let tabId = this.id.split("_")[1];
+        let yearRange = this.value;
+        let int = yearRange.split(" ")[1];
+        let years_selected = {
+          years_selected: int,
+          str_id: "38865",
+        };
+        if (tabId == "#tab5") {
+          fetchTabularData("/yearly_data/", years_selected, tabId);
+        }
+      }
+
+      // DropDowns
+      function populateYearDropdown(tab) {
+        // let yearDropdown = document.getElementById(`year_${tab}`);
+        // let currentYear = new Date().getFullYear();
+        // for (let i = currentYear; i >= currentYear - 10; i--) {
+        //   const option = document.createElement("option");
+        //   option.value = i;
+        //   option.text = i;
+        //   yearDropdown.appendChild(option);
+        // }
+
+        let yearDropdown = document.getElementById(`year_${tab}`);
+        if (yearDropdown) {
+          let currentYear = new Date().getFullYear();
+          for (let i = currentYear; i >= currentYear - 10; i--) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            yearDropdown.appendChild(option);
+          }
+        }
+        //  else {
+        //     console.error(`Element with ID year_${tab} not found.`);
+        // }
+      }
+
+      function populateWeekDropdown(tab, dateRanges) {
+        let weeksDropdown = document.getElementById(`weekFrom_${tab}`);
+        let weeksToDropdown = document.getElementById(`WeekTo_${tab}`);
+        // weeksToDropdown.innerHTML = "";
+        weeksDropdown.innerHTML = "";
+        // weeksToDropdown.innerHTML = "";
+        var quarters = [[], [], [], []];
+        var weekNumber = 1;
+
+        var currentQuarter = 0;
+
+        dateRanges.forEach(function (dateRange, index) {
+          quarters[currentQuarter].push(
+            "Week " + weekNumber + ":  " + dateRange
+          );
+          if (quarters[currentQuarter].length === 13 && currentQuarter < 3) {
+            currentQuarter++;
+          } else if (index === dateRanges.length - 1) {
+            quarters[3].push(
+              "Week  " + weekNumber + ":" + " " + " " + dateRange
+            );
+          }
+          weekNumber++;
+        });
+
+        var defaultOption = document.createElement("option");
+        defaultOption.text = "-select-";
+        defaultOption.value = "-1";
+        weeksDropdown.appendChild(defaultOption);
+
+        var defaultOptionTo = defaultOption.cloneNode(true);
+        if (weeksToDropdown) {
+          weeksToDropdown.appendChild(defaultOptionTo);
+        }
+
+        for (var i = 0; i < quarters.length; i++) {
+          var optgroup = document.createElement("optgroup");
+
+          optgroup.label = "Q" + (i + 1);
+
+          quarters[i].forEach(function (formattedDate) {
+            var option = document.createElement("option");
+            option.text = formattedDate;
+            option.value = formattedDate;
+            optgroup.appendChild(option);
+          });
+
+          weeksDropdown.appendChild(optgroup);
+          var optgroupClone = optgroup.cloneNode(true);
+          if (weeksToDropdown) {
+            weeksToDropdown.appendChild(optgroupClone);
+          }
+        }
+      }
+
+      function populateMonthDropdown(tab) {
+        let monthDropdown = document.getElementById(`month_${tab}`);
+
+        if (monthDropdown) {
+          const monthsArray = [
+            { value: 1, name: "January" },
+            { value: 2, name: "February" },
+            { value: 3, name: "March" },
+            { value: 4, name: "April" },
+            { value: 5, name: "May" },
+            { value: 6, name: "June" },
+            { value: 7, name: "July" },
+            { value: 8, name: "August" },
+            { value: 9, name: "September" },
+            { value: 10, name: "October" },
+            { value: 11, name: "November" },
+            { value: 12, name: "December" },
+          ];
+
+          monthsArray.forEach((month) => {
+            const option = document.createElement("option");
+            option.value = month.value;
+            option.text = month.name;
+            monthDropdown.appendChild(option);
+          });
+        }
+      }
+
+      function populatedLastYearlyDropdown(tab) {
+        let yearlyDropdown = document.getElementById(`yearly_${tab}`);
+        yearlyArray = [
+          "past 2 years",
+          "past 3 years",
+          "past 6 years",
+          "past 12 years",
+        ];
+        if (yearlyDropdown) {
+          yearlyArray.forEach((array) => {
+            const option = document.createElement("option");
+            option.value = array;
+            option.text = array;
+            yearlyDropdown.appendChild(option);
+          });
+        }
+      }
+
+      //API call
+      function fetchTabularData(url, data, tabId) {
+        fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((rawResponse) => rawResponse.json())
+          .then((content) => {
+            // console.log(content)
+            $(document).ready(function () {
+              for (var tableName in content) {
+                let labels = ["My Property", "Comp Set"];
+
+                if (tableName == "adr") {
+                  labels.push("Index (ARI)");
+                }
+                if (tableName == "occupancy") {
+                  labels.push("Index (MPI)");
+                }
+                if (tableName == "revpar") {
+                  labels.push("Index (RGI)");
+                }
+
+                if (content.hasOwnProperty(tableName)) {
+                  if (tabId == "#tab1") {
+                    renderWeekTable(
+                      tableName,
+                      content[tableName],
+                      tabId,
+                      labels
+                    );
+                    console.log(content);
+                  } else if (tabId == "#tab2") {
+                    renderWeeklyTable(
+                      tableName,
+                      content[tableName],
+                      tabId,
+                      labels
+                    );
+                  } else if (tabId == "#tab4") {
+                    renderMonthlyTable(
+                      tableName,
+                      content[tableName],
+                      tabId,
+                      labels
+                    );
+                  } else if (tabId == "#tab5") {
+                    renderyearlyTable(
+                      tableName,
+                      content[tableName],
+                      tabId,
+                      labels
+                    );
+                  } else if (tabId == "#tab3") {
+                    renderMonthTable(
+                      tableName,
+                      content,
+                      content[tableName],
+                      tabId,
+                      labels
+                    );
+                  }
+                }
+              }
+            });
+
+            console.log(content);
+          })
+
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+
+      //RENDERS TABLES
+      function renderWeekTable(tableName, tableData, tabId, labels) {
+        console.log("name -----", tableName);
+        console.log("data -----", tableData);
+        const timestamps = [
+          ...new Set(tableData.map((item) => item.timestamp)),
+        ];
+        // console.log(timestamps);
+
+        const ranks = tableData.map((item) => item.rank);
+        // console.log("res", ranks);
+
+        const desiredOrder = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+
+        timestamps.sort((a, b) => {
+          const momentDateA = moment(a);
+          const weekNameA = momentDateA.format("dddd");
+          const momentDateB = moment(b);
+          const weekNameB = momentDateB.format("dddd");
+          return (
+            desiredOrder.indexOf(weekNameA) - desiredOrder.indexOf(weekNameB)
+          );
+        });
+
+        var columns = [
+          { title: "Label" },
+          ...desiredOrder.map((timestamp) => ({ title: timestamp })),
+        ];
+
+        const dataTable = renderDataTable(tableName, tabId, columns);
+        const rankData = ["Rank"];
+        labels.forEach((label) => {
+          const rowData = [label];
+          desiredOrder.forEach((timestamp) => {
+            const dataPoint = tableData.find(
+              (item) =>
+                item.timestamp ===
+                timestamps.find((ts) => moment(ts).format("dddd") === timestamp)
+            );
+            // console.log(dataPoint);
+
+            if (dataPoint) {
+              const rank = dataPoint.rank;
+              rankData.push(rank);
+              const { change, change_rate } = dataPoint.data.find(
+                (dp) => dp.label === label
+              );
+              rowData.push(change ? change : " ");
+            } else {
+              rowData.push(" ");
+              rankData.push(" ");
+            }
+          });
+          dataTable.row.add(rowData);
+        });
+
+        //Fix this Rank
+
+        // const rankRowData = ["Rank", ...ranks.map(String)];
+        // console.log("rank", rankRowData)
+        dataTable.row.add(rankData);
+
+        dataTable.draw();
+      }
+
+      function renderWeeklyTable(tableName, tableData, tabId, labels) {
+        let weeks = [];
+        let ranks = [];
+
+        tableData.forEach((i) => {
+          Object.values(i).forEach((j) => {
+            if (j[0]?.weekly_averages) {
+              j[0].weekly_averages.forEach((k) =>
+                weeks.push(k.week_start_date)
+              );
+            }
+            if (j[0]?.weekly_rank_avg) {
+              j[0].weekly_rank_avg.forEach((k) =>
+                ranks.push(k.weekly_rank_avg)
+              );
+            }
+          });
+        });
+
+        let formattedWeeks = [];
+
+        weeks.map((wk, idx) => {
+          formattedWeeks.push(`Week ${idx + 1}`);
+        });
+        console.log(formattedWeeks);
+
+        const totalWeeksAverageTitle = "Total Weeks Average";
+
+        var columns = [
+          { title: "Label" },
+          ...formattedWeeks.map((week) => ({ title: week })),
+          { title: totalWeeksAverageTitle },
+        ];
+
+        const dataTable = renderDataTable(tableName, tabId, columns);
+
+        // Object.values(tableData[0]).map((i) => {
+        //   i.map((j) => {
+        //     j.weekly_averages.map((k) => {
+        //       k.week_start_date;
+        //     });
+        //   });
+        // });
+
+        const rankRow = ["Rank"];
+
+        weeks.forEach((timestamps) => {
+          const filteredData = Object.values(tableData[1]).flatMap((i) =>
+            i.flatMap((j) => {
+              const foundData = j.weekly_rank_avg.find((k) => {
+                return (
+                  new Date(k.timestamp).getTime() ===
+                  new Date(timestamps).getTime()
+                );
+              });
+
+              if (foundData) {
+                rankRow.push(foundData.weekly_rank_avg);
+                rankRow.push(j.total_weekly_rank_avg);
+              } else {
+                rankRow.push("");
+              }
+            })
+          );
+        });
+
+        labels.forEach((label) => {
+          const rowData = [label];
+
+          const dataPoint = weeks.flatMap((timestamp) => {
+            const filteredData = Object.values(tableData[0]).flatMap((i) =>
+              i.flatMap((j) =>
+                j.weekly_averages.map((k) => {
+                  if (
+                    new Date(k.week_start_date).getTime() ==
+                    new Date(timestamp).getTime()
+                  ) {
+                    return j;
+                  }
+                  return undefined;
+                })
+              )
+            );
+            return filteredData.filter((value) => value !== undefined);
+          });
+
+          if (dataPoint) {
+            const { total_weeks_average, weekly_averages } = dataPoint.find(
+              (dp) => dp["_id"] === label
+            );
+
+            weekly_averages.map((i) =>
+              rowData.push(i.avg_change ? i.avg_change : " ")
+            );
+            rowData.push(total_weeks_average ? total_weeks_average : " ");
+          } else {
+            rowData.push(" ");
+          }
+
+          dataTable.row.add(rowData);
+        });
+
+        dataTable.row.add(rankRow);
+
+        dataTable.draw();
+      }
+
+      // ----------------------------------------------------------------------------------
+
+      function renderMonthlyTable(tableName, tableData, tabId, labels) {
+        let weeks = [];
+        let ranks = [];
+
+        tableData.forEach((i) => {
+          Object.values(i).forEach((j) => {
+            if (j[0]?.monthly_averages) {
+              j[0].monthly_averages.forEach((k) => weeks.push(k.month));
+            }
+            if (j[0]?.monthly_rank_avg) {
+              j[0].monthly_rank_avg.forEach((k) =>
+                ranks.push(k.monthly_rank_avg)
+              );
+            }
+          });
+        });
+
+        // let formattedWeeks = [];
+
+        // weeks.map((wk, idx) => {
+        //   formattedWeeks.push(`Week ${idx + 1}`);
+        // });
+
+        // const moment = require("moment");
+
+        // const formattedMonths = [];
+        // for (let i = 0; i < 12; i++) {
+        //   const month = moment().month(i).format("MMMM");
+        //   formattedMonths.push(month);
+        // }
+
+        // const formattedMonths = [];
+        // for (let i = 0; i < 12; i++) {
+        //   const month = moment({ month: i });
+        //   console.log(month)
+
+        //   const monthName = month.format("MMMM");
+        //   console.log(monthName)
+
+        //   formattedMonths.push(monthName);
+        // }
+
+        // console.log(formattedMonths);
+
+        const totalWeeksAverageTitle = "Total Weeks Average";
+        const month = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        var columns = [
+          { title: "Label" },
+          ...weeks.map((week) => ({ title: month[new Date(week).getMonth()] })),
+          // ...month.map((week) => ({ title: week })),
+
+          { title: totalWeeksAverageTitle },
+        ];
+
+        const dataTable = renderDataTable(tableName, tabId, columns);
+
+        Object.values(tableData[0]).map((i) => {
+          i.map((j) => {
+            j.monthly_averages.map((k) => {
+              k.month;
+            });
+          });
+        });
+
+        const rankRow = ["Rank"];
+        let newVal;
+
+        weeks.forEach((timestamp) => {
+          const filteredData = Object.values(tableData[1]).flatMap((i) =>
+            i.flatMap((j) => {
+              const foundData = j.monthly_rank_avg.find((k) => {
+                return (
+                  new Date(k.month).getTime() === new Date(timestamp).getTime()
+                );
+              });
+              newVal = j.total_monthly_rank_avg;
+              if (foundData) {
+                rankRow.push(foundData.monthly_rank_avg);
+                // rankRow.push(j.total_monthly_rank_avg);
+              } else {
+                rankRow.push("");
+              }
+            })
+          );
+        });
+        rankRow.push(newVal);
+
+        // month.forEach((item) => {
+        //   const find = weeks.find((n) => month[new Date(n).getMonth()] === item)
+        //   console.log("find", find)
+        //   if(find){
+        //     let foundData
+        //     console.log("filter", tableData[1])
+        //     Object.values(tableData[1]).flatMap((i) => i.flatMap((j) => {
+        //       console.log("j", j)
+        //        foundData = j.monthly_rank_avg.find((k) => k.month === find)
+        //     }))
+        //     if (foundData) {
+        //         rankRow.push(foundData.monthly_rank_avg);
+        //         rankRow.push(j.total_monthly_rank_avg);
+        //       }
+        //   } else {
+        //         rankRow.push("");
+        //       }
+
+        // })
+
+        labels.forEach((label) => {
+          const rowData = [label];
+
+          const dataPoint = weeks.flatMap((timestamp) => {
+            const filteredData = Object.values(tableData[0]).flatMap((i) =>
+              i.flatMap((j) =>
+                j.monthly_averages.map((k) => {
+                  if (
+                    new Date(k.month).getTime() == new Date(timestamp).getTime()
+                  ) {
+                    return j;
+                  }
+                  return undefined;
+                })
+              )
+            );
+            return filteredData.filter((value) => value !== undefined);
+          });
+
+          if (dataPoint) {
+            const { total_months_average, monthly_averages } = dataPoint.find(
+              (dp) => dp["_id"] === label
+            );
+
+            monthly_averages.map((i) =>
+              rowData.push(i.avg_change ? i.avg_change : " ")
+            );
+            rowData.push(total_months_average ? total_months_average : " ");
+          } else {
+            rowData.push(" ");
+          }
+
+          dataTable.row.add(rowData);
+        });
+
+        dataTable.row.add(rankRow);
+
+        dataTable.draw();
+      }
+
+      function renderyearlyTable(tableName, tableData, tabId, labels) {
+        let years = [];
+
+        const uniqueYears = new Set();
+        tableData.forEach((i) => {
+          Object.values(i).forEach((j) => {
+            j.forEach((k) => {
+              if (k._id && k._id.year) {
+                const year = k._id.year;
+                if (!uniqueYears.has(year)) {
+                  years.push(year);
+                  uniqueYears.add(year);
+                }
+              }
+            });
+          });
+        });
+
+        // console.log(years);
+
+        var columns = [
+          { title: "Label" },
+          // ...years.map((year) => ({ title: year.toString() })),
+        ];
+
+        if (years && years.length > 0) {
+          columns.push(...years.map((year) => ({ title: year.toString() })));
+        }
+        // console.log(columns);
+        const dataTable = renderDataTable(tableName, tabId, columns);
+
+        const rankRow = ["Rank"];
+
+        years.forEach((timestamps) => {
+          // console.log(years)
+          let foundData = false;
+          tableData.forEach((obj) => {
+            Object.values(obj).forEach((j) => {
+              // console.log(j)
+              if (Array.isArray(j)) {
+                j.forEach((item) => {
+                  console.log(item)
+                  if (new Date(item.year).getFullYear() === timestamps) {
+                    foundData = item;
+                  }
+                });
+              }
+            });
+          });
+          console.log(foundData)
+
+          if (foundData) {
+            rankRow.push(foundData.yearly_rank_avg);
+            
+          } else {
+            rankRow.push("");
+          }
+          console.log(rankRow);
+        });
+
+        console.log(rankRow);
+
+        labels.forEach((label) => {
+          const rowData = [label];
+
+          const dataPoint = years.map((timestamp) => {
+            const filteredData = Object.values(tableData[0]).flatMap((j) => {
+              if (Array.isArray(j)) {
+                return j.filter((obj) => obj._id && obj._id.year === timestamp);
+              }
+              return [];
+            });
+
+            return filteredData;
+          });
+
+          dataPoint.forEach((dp) => {
+            Object.values(dp).forEach((key) => {
+              // console.log(key)
+              // console.log(key._id.label);
+              if (key._id.label === label) {
+                rowData.push(key.avg_change);
+              }
+              // else {
+              //   rowData.push(" ");
+              // }
+            });
+          });
+          // console.log(rowData);
+          dataTable.row.add(rowData);
+        });
+
+        dataTable.row.add(rankRow);
+        dataTable.draw();
+      }
+
+
+      function give_me_a_html_table(res, field = "occupancy") {
+        var html = "<table>";
+        var heading = "<tr><th>" + Object.keys(res) + "</th></tr>";
+        var subheading = "<tr>";
+        for (const [k, v] in Object.entries(res)) {
+          subheading += "<th>" + k + "</th>";
+        }
+        subheading += "</tr>";
+        myproprow = "<tr>";
+        for (const [k, v] in Object.entries(res)) {
+          if (k == field) {
+          }
+        }
+      }
+      function renderMonthTable(tableName, content, tableData, tabId, labels) {
+        //  console.log(tableName, content, tableData, tabId, labels);
+        console.log(content);
+
+        let headers = Object.keys(content);
+        console.log(headers);
+        // console.log(tableData);
+
+        const subheader = [];
+        const blockHead = [];
+        for (const [k, v] of Object.entries(content)) {
+          let values = Object.keys(v);
+          let head = Object.entries(v);
+          subheader.push(values);
+        }
+
+        console.log(subheader);
+        var columns = [{ title: headers }, { title: subheader }];
+
+        const dataTable = renderDataTable3(
+          tableName,
+          tabId,
+          columns,
+          headers,
+          subheader
+        );
+
+        // let subHeads =
+        // Object.keys(tableData[0][0])
+        // console.log(tableData[0][0])
+
+        //     for (var key in tableData) {
+        // var obj = tableData[key];
+        // console.log(obj)
+        // ...
+        // }
+      }
+
+      // FOR RANGE FUNCTION
+      $(function () {
+        $("#datepickerFrom").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          autoFill: false,
+          // beforeShow: function (input, inst) {
+          //   $(".ui-datepicker-alert").remove();
+          // },
+        });
+
+        $("#datepickerTo").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          autoFill: false,
+          // beforeShow: function (input, inst) {
+          //   $(".ui-datepicker-alert").remove();
+          // },
+        });
+
+        $("#getDateButton").on("click", function () {
+          var fromDate = $("#datepickerFrom").datepicker("getDate");
+          var toDate = $("#datepickerTo").datepicker("getDate");
+
+          if (fromDate && toDate) {
+            var start = $.datepicker.formatDate("yy-mm-dd", toDate);
+            var end = $.datepicker.formatDate("yy-mm-dd", fromDate);
+
+            // console.log("From Date: " + start);
+            // console.log("To Date: " + end);
+
+            $("#tables-container").empty();
+            let rangeCall = {
+              startdate: start,
+              enddate: end,
+              str_id: "38865",
+            };
+
+            fetch("/range_data/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(rangeCall),
+            })
+              .then((rawResponse) => rawResponse.json())
+              .then((content) => {
+                // console.log(content);
+                $(document).ready(function () {
+                  for (var tableName in content) {
+                    //   let labels = ["My Property", "Comp Set"];
+
+                    //   if (tableName == "adr") {
+                    //     labels.push("Index (ARI)");
+                    //   }
+                    //   if (tableName == "occupancy") {
+                    //     labels.push("Index (MPI)");
+                    //   }
+                    //   if (tableName == "revpar") {
+                    //     labels.push("Index (RGI)");
+                    //   }
+
+                    if (content.hasOwnProperty(tableName)) {
+                      renderRangeTable(tableName, content[tableName]);
+                    }
+                  }
+                });
+
+                // console.log(content);
+              })
+
+              .catch((error) => {});
+
+            function renderRangeTable(tableName, tableData, tabId) {
+              const rowOrder = [
+                "My Property",
+                "Comp Set",
+                "Index (ARI)",
+                "Index (MPI)",
+                "Index (RGI)",
+              ];
+
+              const matchLabel = [];
+
+              rowOrder.forEach((label) => {
+                tableData.forEach((i) => {
+                  Object.values(i).forEach((j) => {
+                    j.forEach((k) => {
+                      if (k.label === label) {
+                        matchLabel.push(label);
+                      }
+                    });
+                  });
+                });
+              });
+
+              var columns = [
+                ...matchLabel.map((label) => ({ title: label })),
+                { title: "Rank" },
+              ];
+
+              const dataTable = renderDataTable(tableName, tabId, columns);
+
+              const rowData = [];
+              // console.log('rowOrder',rowOrder)
+              // console.log('tableData',tableData)
+              rowOrder.forEach((label) => {
+                Object.values(tableData[0]).forEach((j) => {
+                  j.forEach((k) => {
+                    if (k.label == label) {
+                      rowData.push(k.avg_change);
+                    }
+                  });
+                });
+              });
+              Object.values(tableData[1]).map((i) => {
+                if ("rank" in i[0]) {
+                  rowData.push(i[0]["rank"]);
+                }
+              });
+              // console.log(rowData);
+
+              dataTable.row.add(rowData);
+
+              dataTable.draw();
+            }
+          } else {
+            alert("Please select both From and To dates.");
+          }
+
+          $("#tables-container").empty();
+        });
+      });
+
+      //METHODS
+      function renderDataTable(tableName, tabId, columns) {
+        var containerDiv = $("<div>")
+          .addClass("table-container")
+          .appendTo(`#tables-container`);
+
+        $("<h3>").text(`${tableName}:`).appendTo(containerDiv);
+
+        var tableContainer = $("<table>")
+          .attr("id", tableName)
+          .appendTo(containerDiv);
+
+        var dataTable = tableContainer.DataTable({
+          data: [],
+          columns: columns,
+          bDestroy: true,
+          bFilter: false,
+          bSort: false,
+          info: false,
+          paging: false,
+          lengthChange: false,
+          deferRender: true,
+        });
+        // console.log(dataTable);
+        return dataTable;
+      }
+
+      function renderTable2(tableName, tabId, columns) {
+        var containerDiv = $("<div>")
+          .addClass("table-container")
+          // .css({
+          //   display: "inline-block",
+          //   width: "45%",
+          // })
+          .appendTo(`#tables-container`);
+
+        $("<h3>").text(`${tableName}:`).appendTo(containerDiv);
+
+        var tableContainer = $("<table>")
+          .attr("id", tableName)
+          // .css({
+          //   tableLayout: "fixed",
+          //   width: "100%"
+          // })
+          .appendTo(containerDiv);
+
+        var dataTable = tableContainer.DataTable({
+          data: [],
+          columns: columns,
+          bDestroy: true,
+          bFilter: false,
+          bSort: false,
+          info: false,
+          paging: false,
+          lengthChange: false,
+          deferRender: true,
+          columnDefs: [{ width: "1%" }, { width: "1%" }, { width: "1%" }],
+        });
+        // tableContainer.find("td").css("white-space", "normal");
+        // tableContainer.find("td").css("width", "10px");
+
+        return dataTable;
+      }
+
+      function renderDataTable3(
+        tableName,
+        tabId,
+        columns,
+        headers,
+        subheaders
+      ) {
+        var containerDiv = $("<div>")
+          .addClass("table-container")
+          .appendTo(`#tables-container`);
+
+        $("<h3>").text(`${tableName}:`).appendTo(containerDiv);
+
+        var tableContainer = $("<table>")
+          .attr("id", tableName)
+          .appendTo(containerDiv);
+
+        // Combine headers and subheaders side by side
+        var combinedHeaders = [];
+        for (let i = 0; i < headers.length; i++) {
+          combinedHeaders.push({ title: headers[i], subheader: subheaders[i] });
+        }
+
+        var dataTable = tableContainer.DataTable({
+          data: [],
+          columns: columns,
+          bDestroy: true,
+          bFilter: false,
+          bSort: false,
+          info: false,
+          paging: false,
+          lengthChange: false,
+          deferRender: true,
+        });
+
+        // Insert the header and subheader information into the DataTable
+        dataTable.row.add(combinedHeaders).draw();
+
+        return dataTable;
+      }
+
+      function extractData(weekRange) {
+        let date_array = [];
+
+        for (var i = 0; i < weekRange.length; i++) {
+          let parsedDate = moment(weekRange[i].trim(), "MMMM DD, YYYY");
+          let formattedDate = parsedDate.format("YYYY-MM-DD");
+          date_array.push(formattedDate);
+        }
+        return date_array;
+      }
+
+      function getDateRangeOfWeek(weekNo, y) {
+        var dateRanges = [];
+        for (let i = 0; i < weekNo; i++) {
+          var d1, d2;
+          d1 = new Date(y, 0, 1);
+          d1.setDate(d1.getDate() + i * 7 - (d1.getDay() || 7));
+          d2 = new Date(d1.getTime());
+          d2.setDate(d2.getDate() + 6);
+
+          var rangeIsFrom =
+            d1.toLocaleString("en-US", { month: "long" }) +
+            d1.getDate() +
+            "," +
+            d1.getFullYear();
+
+          var rangeIsTo =
+            d2.toLocaleString("en-US", { month: "long" }) +
+            d2.getDate() +
+            "," +
+            d2.getFullYear();
+          dateRanges.push(rangeIsFrom + " - " + rangeIsTo);
+        }
+        return dateRanges;
+      }
+
+      function weeksInYear(year) {
+        var month = 11,
+          day = 31,
+          week;
+        do {
+          d = new Date(year, month, day--);
+          week = getWeekNumber(d)[1];
+        } while (week == 1);
+
+        return week;
+      }
+
+      function getWeekNumber(d) {
+        d = new Date(+d);
+        d.setHours(0, 0, 0, 0);
+        d.setDate(d.getDate() + 4 - (d.getDay() || 7));
+        var yearStart = new Date(d.getFullYear(), 0, 1);
+        var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+        return [d.getFullYear(), weekNo];
+      }
+
+      Date.prototype.getWeek = function () {
+        var date = new Date(this.getTime());
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() + 4 - (date.getDay() || 7));
+        var yearStart = new Date(date.getFullYear(), 0, 1);
+        return Math.ceil(((date - yearStart) / 86400000 + 1) / 7);
+      };
+
+      function weeksBetweenDates(start, end) {
+        const d1 = new Date(start);
+        const d2 = new Date(end);
+
+        const timeDifference = Math.abs(d2 - d1);
+
+        const weeks = Math.floor(timeDifference / 604800000);
+
+        return weeks;
+      }
+
+      // For logout
+
+      document.getElementById("logout").addEventListener("click", function () {
+        var confirmation = confirm("Are you sure you want to log out?");
+        if (confirmation) {
+          localStorage.removeItem("access_token");
+          window.location.href = "/";
+        } else {
+          // User clicked "Cancel" in the confirmation dialog, do nothing
+        }
+      });
+    </script>
+  </body>
+</html>
